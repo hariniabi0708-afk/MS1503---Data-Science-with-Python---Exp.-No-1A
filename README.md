@@ -28,8 +28,53 @@ To collect employee details, validate inputs, and calculate gross and net salary
 
 ## Program
 
+def main():
+    name = input("Enter Employee Name: ").strip()
+    emp_id = input("Enter Employee ID: ").strip()
 
+    if not name or not emp_id:
+        print("Error: Employee Name and Employee ID cannot be empty.")
+        return
+
+    try:
+        basic = float(input("Enter Basic Salary: "))
+    except ValueError:
+        print("Error: Basic salary must be a valid numeric value.")
+        return
+
+    if basic < 0:
+        print("Error: Basic salary cannot be negative.")
+        return
+
+    hra = 0.15 * basic
+    da = 0.10 * basic
+    gross_salary = basic + hra + da
+    tax = 0.08 * gross_salary
+    net_salary = gross_salary - tax
+
+    print("\n" + "=" * 42)
+    print("           EMPLOYEE PAYROLL REPORT")
+    print("=" * 42)
+    print(f"Employee Name : {name}")
+    print(f"Employee ID   : {emp_id}")
+    print("-" * 42)
+    print(f"Basic Salary  : {basic:10.2f}")
+    print(f"HRA (15%)     : {hra:10.2f}")
+    print(f"DA (10%)      : {da:10.2f}")
+    print("-" * 42)
+    print(f"Gross Salary  : {gross_salary:10.2f}")
+    print(f"Tax (8%)      : {tax:10.2f}")
+    print("-" * 42)
+    print(f"Net Salary    : {net_salary:10.2f}")
+    print("=" * 42)
+
+
+if _name_ == "_main_":
+    main()
+    
 ## Output
+
+<img width="442" height="406" alt="image" src="https://github.com/user-attachments/assets/1375b5d8-f447-42fa-9ddf-eb1cdfa0e599" />
 
 
 ## ✅ Result
